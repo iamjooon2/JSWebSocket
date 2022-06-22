@@ -2,6 +2,7 @@ const express = require('express');
 
 const indexRoute = require('./routes/index.js');
 const userRoute = require('./routes/user.js');
+const webSocket = require('./socket/socket.js');
 
 const PORT = 3000;
 
@@ -17,7 +18,8 @@ const server = () => {
 
     userRoute(app);
     indexRoute(app);
-
+    webSocket(app);
+    
     app.listen(PORT, () => {
         console.log(`server is now listening to ${PORT}`);
     });
