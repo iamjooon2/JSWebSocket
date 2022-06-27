@@ -20,7 +20,6 @@ module.exports = (server) => {
             io.emit("receiveAll",msg);
         });
 
-
         //전체채팅: 테스트CASE2
         //샘플용 서버 수신기 - test1 기능정의 
         socket.on("test1",function(param1,param2){
@@ -28,16 +27,12 @@ module.exports = (server) => {
             io.emit("receive1",param1,param2);
         });
 
-
         //전체채팅: 테스트CASE3
         //샘플용 서버 수신기 - test2 기능정의 
         socket.on("test2",function(jsonData){
             //현재 웹서버에 연결된 모든사용자에게 receive1 수신기로 param1 값을 전송함
             io.emit("receive2",jsonData);
         });
-
-
-
 
         //그룹채팅: 채팅방 입장하기 
         //그룹채팅 채팅방 입장하기 
@@ -50,7 +45,6 @@ module.exports = (server) => {
             socket.emit("entryok","채팅방 입장완료!!!");
         });
 
-        
         //그룹채팅: 채팅방 클라이언트 메시지 수신 및 클라이언트로 발신처리하기 
         //그룹 메시징 수신 및 발송
         socket.on("groupmsg",function(roomId,msg){
@@ -60,6 +54,5 @@ module.exports = (server) => {
             io.to(roomId).emit("receiveGroupMsg",roomId,msg);
         });
 
-        
     });
 }
